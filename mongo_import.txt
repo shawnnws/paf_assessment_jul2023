@@ -1,0 +1,1 @@
+mongoimport --uri mongodb+srv://shawnng:shawnng@cluster0.dolwo5y.mongodb.net/accomodation --collection accomodation_info --type=json --file listings.json
