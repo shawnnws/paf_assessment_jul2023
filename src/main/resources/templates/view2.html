@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a th:href="@{'/search?country=' + ${country} + '&numberOfPerson=' + ${numberOfPerson} + '&minPriceRange=' + ${minPriceRange} + '&maxPriceRange=' + ${maxPriceRange} }">Back</a>
+
+        <table border="1">
+            <tr>
+                <td>Id:</td>
+                <td th:text="${accomDetail.accommodationId}"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <span th:text="${accomDetail.description}"></span>
+                    <img th:src="${accomDetail.image}" alt="Image" width="100" height="100">
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <span th:text="${accomDetail.street}"></span>
+                    <span th:text="${accomDetail.suburb}"></span>
+                    <span th:text="${accomDetail.country}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td th:text="${accomDetail.price}"></td>
+            </tr>
+            <tr>
+                <td>Amenities</td>
+                <td th:text="${accomDetail.amenities}"></td>
+            </tr>
+
+            <!-- <thead>
+                <tr>
+                    <th>Id</th>
+                    <th th:text="${accomDetail.accommodationId}">Accommodation ID</th>
+                </tr>
+                <tr>
+                    <th>
+                        <td>Description</td>
+                        <td>
+                            <span th:text="${accomDetail.description}"></span>
+                            <img th:src="${accomDetail.image}" alt="Image" width="50" height="50">
+                        </td>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <th th:text="${accomDetail.street + ',' + accomDetail.suburb + ', ' + accomDetail.country}">Address</th>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <th th:text="${accomDetail.price}">Price</th>
+                </tr>
+                <tr>
+                    <th>Amenities</th>
+                    <th th:text="${accomDetail.amenities}">Amenities</th>
+                </tr>
+            </thead> -->
+        </table>
+
+        <h1>Bookings</h1>
+        
+        <form th:object="${bookingForm}" method="post" action="/book">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input th:field="*{userName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input th:field="*{userEmail}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Arrival</td>
+                    <td>
+                        <input type="date" th:field="*{arrivalDate}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stay</td>
+                    <td>
+                        <input th:field="*{durationOfStayInDays}">Days
+                    </td>
+                </tr>
+            </table>
+            
+            <button type="submit">Book</button>
+        </form>
+    
+</body>
+</html>
